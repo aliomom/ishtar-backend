@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets\\images",
-    "\\Local settings (.vs)\\ishtar"
+    "\\.git",
+    "\\docker",
+    "\\docker\\mysql",
+    "\\docker\\nginx",
+    "\\docker\\php-fpm"
   ],
-  "SelectedNode": "\\translations",
+  "SelectedNode": "\\.git\\hooks",
   "PreviewInSolutionExplorer": false
 }
