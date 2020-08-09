@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\.git",
-    "\\docker",
     "\\docker\\mysql",
-    "\\docker\\nginx",
-    "\\docker\\php-fpm"
+    "\\docker\\nginx"
   ],
-  "SelectedNode": "\\.git\\hooks",
   "PreviewInSolutionExplorer": false
 }

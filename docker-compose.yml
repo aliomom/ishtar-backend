@@ -2,9 +2,9 @@ version: '3.7'
 
 services:
   nginx:
-  env_file:
-      - env
-      - env.dev
+    env_file:
+       - .env
+       - .env.dev
     build:
       args:
         VERSION: $NGINX_VERSION
@@ -19,8 +19,8 @@ services:
       - 8000:80
   php-fpm:
     env_file:
-      - env
-      - env.dev
+       - .env
+       - .env.dev
     build:
       args:
         VERSION: $PHP_VERSION
@@ -34,8 +34,8 @@ services:
       - mysql
   mysql:
     env_file:
-       - env
-       - env.dev
+       - .env
+       - .env.dev
     build:
       args:
         VERSION: $MYSQL_VERSION
