@@ -14,7 +14,7 @@ composer require symfony/dotenv
 
 # stage of run
 FROM php:7.4-apache
-RUN apt-get update && apt-get install -y build-essential libssl-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev
+RUN apt-get update -qq && apt-get install -qq -y build-essential libssl-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev
 
 #ENV APACHE_DOCUMENT_ROOT=/var/www/html
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
