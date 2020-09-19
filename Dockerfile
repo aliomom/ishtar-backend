@@ -2,7 +2,7 @@ FROM php:7.4-fpm AS vendor
 WORKDIR /tmp/
 COPY composer.json composer.json
 COPY composer.lock composer.lock
-RUN apt update -y && apt install zip libicu-dev  -y \
+RUN apt update -qq -y && apt install -qq zip libicu-dev  -y \
 && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 && docker-php-ext-install intl && \
 composer update && composer install && \
