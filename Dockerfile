@@ -4,12 +4,12 @@ COPY composer.json composer.json
 COPY composer.lock composer.lock
 RUN apt update -qq -y && apt install -qq zip libicu-dev  -y \
 && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-&& docker-php-ext-install intl && \
+&& docker-php-ext-install intl > /dev/null && \
 composer update --quiet && composer install --quiet && \
-composer require symfony/translation && \
-composer require doctrine/annotations && \
-composer require symfony/orm-pack && \
-composer require symfony/dotenv
+composer require symfony/translation > /dev/null && \
+composer require doctrine/annotations > /dev/null && \
+composer require symfony/orm-pack > /dev/null && \
+composer require symfony/dotenv > /dev/null
 
 
 # stage of run
@@ -22,7 +22,7 @@ COPY . /var/www/html
 RUN chown -R www-data:www-data /var && chmod -R g+rw /var
 COPY .htaccess /var/www/html/public/
 COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-configure gd && docker-php-ext-install gd
+RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-configure gd > /dev/null && docker-php-ext-install gd > /dev/null
 
 
 
