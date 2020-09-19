@@ -8,7 +8,9 @@ RUN apt update -y && apt install zip libicu-dev  -y \
 composer update && composer install && \
 composer require symfony/translation && \
 composer require doctrine/annotations && \
-composer require symfony/orm-pack
+composer require symfony/orm-pack && \
+composer require symfony/dotenv
+
 
 # stage of run
 FROM php:7.4-apache
