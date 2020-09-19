@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: php-apache
-        image: gcr.io/yescloud/ishtarback
+        image: gcr.io/yescloud/github.com/aliomom/ishtar-backend
         ports:
         - containerPort: 80
         volumeMounts:
