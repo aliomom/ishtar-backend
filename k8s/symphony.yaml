@@ -1,24 +1,51 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver
-  namespace: ishtar
   labels:
     app: apache
+  name: webserver
+  namespace: ishtar
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: apache
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
         app: apache
     spec:
       containers:
-      - name: php-apache
-        image: gcr.io/yescloud/github.com/aliomom/ishtar-backend
-        ports:
-        - containerPort: 80
-      
-
+        - image: gcr.io/yescloud/github.com/aliomom/ishtar-backend
+          imagePullPolicy: Always
+          name: php-apache
+          ports:
+            - containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    run: web-service
+  name: web-service
+  namespace: ishtar
+spec:
+  clusterIP: 10.4.14.241
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 31681
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: apache
+  sessionAffinity: None
+  type: LoadBalancer
