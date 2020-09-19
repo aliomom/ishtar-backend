@@ -2,7 +2,13 @@ FROM php:7.4-fpm AS vendor
 WORKDIR /tmp/
 COPY composer.json composer.json
 COPY composer.lock composer.lock
-RUN apt update -y && apt install zip libicu-dev  -y && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && docker-php-ext-install intl && composer update && composer install && composer require symfony/translation && composer require doctrine/annotations && composer require symfony/orm-pack
+RUN apt update -y && apt install zip libicu-dev  -y \
+&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+&& docker-php-ext-install intl && \
+composer update && composer install && \
+composer require symfony/translation && \
+composer require doctrine/annotations && \
+composer require symfony/orm-pack
 
 # stage of run
 FROM php:7.4-apache
