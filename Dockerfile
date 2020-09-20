@@ -22,7 +22,7 @@ COPY . /var/www/html
 RUN chown -R www-data:www-data /var && chmod -R g+rw /var
 COPY .htaccess /var/www/html/public/
 COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-configure gd > /dev/null && docker-php-ext-install gd > /dev/null
+RUN docker-php-ext-install mysqli pdo pdo_mysql > /dev/null && docker-php-ext-configure gd > /dev/null && docker-php-ext-install gd > /dev/null
 
 
 

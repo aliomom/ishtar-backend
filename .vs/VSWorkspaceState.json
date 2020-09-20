@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\docker",
-    "\\docker\\mysql",
-    "\\docker\\nginx"
+    "\\config",
+    "\\config\\packages",
+    "\\config\\routes"
   ],
-  "SelectedNode": "\\docker\\nginx\\default.conf",
+  "SelectedNode": "\\config\\packages\\lexik_jwt_authentication.yaml",
   "PreviewInSolutionExplorer": false
 }
